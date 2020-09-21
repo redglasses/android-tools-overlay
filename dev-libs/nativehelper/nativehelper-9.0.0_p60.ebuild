@@ -94,5 +94,5 @@ src_compile() {
 
 src_install() {
 	dolib.so lib${PN}.so
-	doheader -r "lib${PN}"/include/"${PN}"
+	doheader -r "lib${PN}"/{include,header_only_include}/"${PN}" "lib${PN}"/include_jni/jni.h
 }
