@@ -17,7 +17,7 @@ rule cxx
   command = $CXX -std=gnu++2a $CXXFLAGS $CPPFLAGS $cflags -c $in -o $out
 
 rule lib
-  command = $CXX -shared -Wl,-soname,$out $ldflags $LDFLAGS $in -o $out
+  command = $CXX -shared -Wl,-soname,$out -o $out $in $ldflags $LDFLAGS
 
 rule link
   command = $CXX $ldflags $LDFLAGS $in -o $out
@@ -112,28 +112,28 @@ build system/core/libziparchive/zip_archive_stream_entry.cc.o: cxx system/core/l
 build system/core/libziparchive/zip_writer.cc.o: cxx system/core/libziparchive/zip_writer.cc
     cflags = -fPIC -std=c++17 -Isystem/core/base/include -Isystem/core/include -Isystem/core/libziparchive/include -Isystem/core/libcutils/include
 build libziparchive.so: lib system/core/libziparchive/zip_archive.cc.o system/core/libziparchive/zip_archive_stream_entry.cc.o system/core/libziparchive/zip_writer.cc.o
-    ldflags = 
+    ldflags = -lbase
 build system/core/libutils/FileMap.cpp.o: cxx system/core/libutils/FileMap.cpp
-    cflags = -fPIC -Isystem/core/include -Isystem/core/bbase/include
+    cflags = -fPIC -Isystem/core/include -Isystem/core/base/include
 build system/core/libutils/JenkinsHash.cpp.o: cxx system/core/libutils/JenkinsHash.cpp
-    cflags = -fPIC -Isystem/core/include -Isystem/core/bbase/include
+    cflags = -fPIC -Isystem/core/include -Isystem/core/base/include
 build system/core/libutils/RefBase.cpp.o: cxx system/core/libutils/RefBase.cpp
-    cflags = -fPIC -Isystem/core/include -Isystem/core/bbase/include
+    cflags = -fPIC -Isystem/core/include -Isystem/core/base/include
 build system/core/libutils/SharedBuffer.cpp.o: cxx system/core/libutils/SharedBuffer.cpp
-    cflags = -fPIC -Isystem/core/include -Isystem/core/bbase/include
+    cflags = -fPIC -Isystem/core/include -Isystem/core/base/include
 build system/core/libutils/Static.cpp.o: cxx system/core/libutils/Static.cpp
-    cflags = -fPIC -Isystem/core/include -Isystem/core/bbase/include
+    cflags = -fPIC -Isystem/core/include -Isystem/core/base/include
 build system/core/libutils/String16.cpp.o: cxx system/core/libutils/String16.cpp
-    cflags = -fPIC -Isystem/core/include -Isystem/core/bbase/include
+    cflags = -fPIC -Isystem/core/include -Isystem/core/base/include
 build system/core/libutils/String8.cpp.o: cxx system/core/libutils/String8.cpp
-    cflags = -fPIC -Isystem/core/include -Isystem/core/bbase/include
+    cflags = -fPIC -Isystem/core/include -Isystem/core/base/include
 build system/core/libutils/StrongPointer.cpp.o: cxx system/core/libutils/StrongPointer.cpp
-    cflags = -fPIC -Isystem/core/include -Isystem/core/bbase/include
+    cflags = -fPIC -Isystem/core/include -Isystem/core/base/include
 build system/core/libutils/Threads.cpp.o: cxx system/core/libutils/Threads.cpp
-    cflags = -fPIC -Isystem/core/include -Isystem/core/bbase/include
+    cflags = -fPIC -Isystem/core/include -Isystem/core/base/include
 build system/core/libutils/VectorImpl.cpp.o: cxx system/core/libutils/VectorImpl.cpp
-    cflags = -fPIC -Isystem/core/include -Isystem/core/bbase/include
+    cflags = -fPIC -Isystem/core/include -Isystem/core/base/include
 build system/core/libutils/Unicode.cpp.o: cxx system/core/libutils/Unicode.cpp
-    cflags = -fPIC -Isystem/core/include -Isystem/core/bbase/include
+    cflags = -fPIC -Isystem/core/include -Isystem/core/base/include
 build libutils.so: lib system/core/libutils/FileMap.cpp.o system/core/libutils/JenkinsHash.cpp.o system/core/libutils/RefBase.cpp.o system/core/libutils/SharedBuffer.cpp.o system/core/libutils/Static.cpp.o system/core/libutils/String16.cpp.o system/core/libutils/String8.cpp.o system/core/libutils/StrongPointer.cpp.o system/core/libutils/Threads.cpp.o system/core/libutils/VectorImpl.cpp.o system/core/libutils/Unicode.cpp.o
     ldflags = 
