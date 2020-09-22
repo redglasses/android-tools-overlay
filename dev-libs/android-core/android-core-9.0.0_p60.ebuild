@@ -53,6 +53,14 @@ src_prepare() {
 				-i {} \; || die
 	fi
 
+	find "${S}" -name '*.h' -exec \
+		sed -e 's|^#include <stdatomic.h>$|#ifndef __cplusplus\n# include <stdatomic.h>\n#else\n# include <atomic>\n# define _Atomic(X) std::atomic< X >\nusing namespace std;\n#endif|' \
+		-i {} \; || die
+
+	#sed -e 's|operator = (static_cast<const VectorImpl&>(rhs))|operator = const_cast<VectorImpl*>(static_cast<const VectorImpl&>(rhs))|' \
+	#	-i system/core/include/utils/Vector.h || die
+
+# operator = (static_cast<const VectorImpl&>(rhs))
 	default
 }
 
