@@ -20,7 +20,7 @@ rule link
   command = $CXX $ldflags $LDFLAGS $in -o $out
 
 rule lib
-  command = $CXX -shared $ldflags $LDFLAGS $in -o $out
+  command = $CXX -shared -Wl,-soname,$out $ldflags $LDFLAGS $in -o $out
 
 rule protoc
   command = protoc --cpp_out=. $in
@@ -35,50 +35,6 @@ rule genheader
   command = (echo 'unsigned char $var[] = {' && xxd -i <$in && echo '};') > $out
 
 
-build system/core/liblog/config_read.c.o: cc system/core/liblog/config_read.c
-    cflags = -DLIBLOG_LOG_TAG=1006 -D_XOPEN_SOURCE=700 -DFAKE_LOG_DEVICE=1 -Isystem/core/include -fPIC
-build system/core/liblog/config_write.c.o: cc system/core/liblog/config_write.c
-    cflags = -DLIBLOG_LOG_TAG=1006 -D_XOPEN_SOURCE=700 -DFAKE_LOG_DEVICE=1 -Isystem/core/include -fPIC
-build system/core/liblog/fake_log_device.c.o: cc system/core/liblog/fake_log_device.c
-    cflags = -DLIBLOG_LOG_TAG=1006 -D_XOPEN_SOURCE=700 -DFAKE_LOG_DEVICE=1 -Isystem/core/include -fPIC
-build system/core/liblog/fake_writer.c.o: cc system/core/liblog/fake_writer.c
-    cflags = -DLIBLOG_LOG_TAG=1006 -D_XOPEN_SOURCE=700 -DFAKE_LOG_DEVICE=1 -Isystem/core/include -fPIC
-build system/core/liblog/local_logger.c.o: cc system/core/liblog/local_logger.c
-    cflags = -DLIBLOG_LOG_TAG=1006 -D_XOPEN_SOURCE=700 -DFAKE_LOG_DEVICE=1 -Isystem/core/include -fPIC
-build system/core/liblog/logger_lock.c.o: cc system/core/liblog/logger_lock.c
-    cflags = -DLIBLOG_LOG_TAG=1006 -D_XOPEN_SOURCE=700 -DFAKE_LOG_DEVICE=1 -Isystem/core/include -fPIC
-build system/core/liblog/logger_name.c.o: cc system/core/liblog/logger_name.c
-    cflags = -DLIBLOG_LOG_TAG=1006 -D_XOPEN_SOURCE=700 -DFAKE_LOG_DEVICE=1 -Isystem/core/include -fPIC
-build system/core/liblog/logger_write.c.o: cc system/core/liblog/logger_write.c
-    cflags = -DLIBLOG_LOG_TAG=1006 -D_XOPEN_SOURCE=700 -DFAKE_LOG_DEVICE=1 -Isystem/core/include -fPIC
-build system/core/liblog/logprint.c.o: cc system/core/liblog/logprint.c
-    cflags = -DLIBLOG_LOG_TAG=1006 -D_XOPEN_SOURCE=700 -DFAKE_LOG_DEVICE=1 -Isystem/core/include -fPIC
-build system/core/liblog/stderr_write.c.o: cc system/core/liblog/stderr_write.c
-    cflags = -DLIBLOG_LOG_TAG=1006 -D_XOPEN_SOURCE=700 -DFAKE_LOG_DEVICE=1 -Isystem/core/include -fPIC
-build system/core/libcutils/android_get_control_file.cpp.o: cxx system/core/libcutils/android_get_control_file.cpp
-    cflags = -fPIC -DPROP_NAME_MAX=32 -D_GNU_SOURCE -Isystem/core/libcutils/include -Isystem/core/include
-build system/core/libcutils/canned_fs_config.cpp.o: cxx system/core/libcutils/canned_fs_config.cpp
-    cflags = -fPIC -DPROP_NAME_MAX=32 -D_GNU_SOURCE -Isystem/core/libcutils/include -Isystem/core/include
-build system/core/libcutils/fs_config.cpp.o: cxx system/core/libcutils/fs_config.cpp
-    cflags = -fPIC -DPROP_NAME_MAX=32 -D_GNU_SOURCE -Isystem/core/libcutils/include -Isystem/core/include
-build system/core/libcutils/load_file.cpp.o: cxx system/core/libcutils/load_file.cpp
-    cflags = -fPIC -DPROP_NAME_MAX=32 -D_GNU_SOURCE -Isystem/core/libcutils/include -Isystem/core/include
-build system/core/libcutils/socket_inaddr_any_server_unix.cpp.o: cxx system/core/libcutils/socket_inaddr_any_server_unix.cpp
-    cflags = -fPIC -DPROP_NAME_MAX=32 -D_GNU_SOURCE -Isystem/core/libcutils/include -Isystem/core/include
-build system/core/libcutils/socket_local_client_unix.cpp.o: cxx system/core/libcutils/socket_local_client_unix.cpp
-    cflags = -fPIC -DPROP_NAME_MAX=32 -D_GNU_SOURCE -Isystem/core/libcutils/include -Isystem/core/include
-build system/core/libcutils/socket_local_server_unix.cpp.o: cxx system/core/libcutils/socket_local_server_unix.cpp
-    cflags = -fPIC -DPROP_NAME_MAX=32 -D_GNU_SOURCE -Isystem/core/libcutils/include -Isystem/core/include
-build system/core/libcutils/socket_network_client_unix.cpp.o: cxx system/core/libcutils/socket_network_client_unix.cpp
-    cflags = -fPIC -DPROP_NAME_MAX=32 -D_GNU_SOURCE -Isystem/core/libcutils/include -Isystem/core/include
-build system/core/libcutils/sockets.cpp.o: cxx system/core/libcutils/sockets.cpp
-    cflags = -fPIC -DPROP_NAME_MAX=32 -D_GNU_SOURCE -Isystem/core/libcutils/include -Isystem/core/include
-build system/core/libcutils/sockets_unix.cpp.o: cxx system/core/libcutils/sockets_unix.cpp
-    cflags = -fPIC -DPROP_NAME_MAX=32 -D_GNU_SOURCE -Isystem/core/libcutils/include -Isystem/core/include
-build system/core/libcutils/threads.cpp.o: cxx system/core/libcutils/threads.cpp
-    cflags = -fPIC -DPROP_NAME_MAX=32 -D_GNU_SOURCE -Isystem/core/libcutils/include -Isystem/core/include
-build system/core/libcutils/trace-host.cpp.o: cxx system/core/libcutils/trace-host.cpp
-    cflags = -fPIC -DPROP_NAME_MAX=32 -D_GNU_SOURCE -Isystem/core/libcutils/include -Isystem/core/include
 build libnativehelper/JNIHelp.cpp.o: cxx libnativehelper/JNIHelp.cpp
     cflags = -fPIC -Ilibnativehelper/header_only_include -Ilibnativehelper/include -Ilibnativehelper/include_jni -Ilibnativehelper/platform_include -Isystem/core/include
 build libnativehelper/JniConstants.cpp.o: cxx libnativehelper/JniConstants.cpp
@@ -87,5 +43,5 @@ build libnativehelper/toStringArray.cpp.o: cxx libnativehelper/toStringArray.cpp
     cflags = -fPIC -Ilibnativehelper/header_only_include -Ilibnativehelper/include -Ilibnativehelper/include_jni -Ilibnativehelper/platform_include -Isystem/core/include
 build libnativehelper/JniInvocation.cpp.o: cxx libnativehelper/JniInvocation.cpp
     cflags = -fPIC -Ilibnativehelper/header_only_include -Ilibnativehelper/include -Ilibnativehelper/include_jni -Ilibnativehelper/platform_include -Isystem/core/include
-build libnativehelper.so: lib libnativehelper/JNIHelp.cpp.o libnativehelper/JniConstants.cpp.o libnativehelper/toStringArray.cpp.o libnativehelper/JniInvocation.cpp.o system/core/liblog/config_read.c.o system/core/liblog/config_write.c.o system/core/liblog/fake_log_device.c.o system/core/liblog/fake_writer.c.o system/core/liblog/local_logger.c.o system/core/liblog/logger_lock.c.o system/core/liblog/logger_name.c.o system/core/liblog/logger_write.c.o system/core/liblog/logprint.c.o system/core/liblog/stderr_write.c.o system/core/libcutils/android_get_control_file.cpp.o system/core/libcutils/canned_fs_config.cpp.o system/core/libcutils/fs_config.cpp.o system/core/libcutils/load_file.cpp.o system/core/libcutils/socket_inaddr_any_server_unix.cpp.o system/core/libcutils/socket_local_client_unix.cpp.o system/core/libcutils/socket_local_server_unix.cpp.o system/core/libcutils/socket_network_client_unix.cpp.o system/core/libcutils/sockets.cpp.o system/core/libcutils/sockets_unix.cpp.o system/core/libcutils/threads.cpp.o system/core/libcutils/trace-host.cpp.o
-    ldflags = -lpthread
+build libnativehelper.so: lib libnativehelper/JNIHelp.cpp.o libnativehelper/JniConstants.cpp.o libnativehelper/toStringArray.cpp.o libnativehelper/JniInvocation.cpp.o
+    ldflags = -lpthread -llog -lcutils
