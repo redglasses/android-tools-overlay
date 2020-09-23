@@ -37,6 +37,8 @@ rule genheader
 
 build system/core/base/chrono_utils.cpp.o: cxx system/core/base/chrono_utils.cpp
     cflags = -fPIC -DADB_HOST=1 -Isystem/core/base/include -Isystem/core/include
+build system/core/base/errors_unix.cpp.o: cxx system/core/base/errors_unix.cpp
+    cflags = -fPIC -DADB_HOST=1 -Isystem/core/base/include -Isystem/core/include
 build system/core/base/file.cpp.o: cxx system/core/base/file.cpp
     cflags = -fPIC -DADB_HOST=1 -Isystem/core/base/include -Isystem/core/include
 build system/core/base/logging.cpp.o: cxx system/core/base/logging.cpp
@@ -51,7 +53,7 @@ build system/core/base/strings.cpp.o: cxx system/core/base/strings.cpp
     cflags = -fPIC -DADB_HOST=1 -Isystem/core/base/include -Isystem/core/include
 build system/core/base/test_utils.cpp.o: cxx system/core/base/test_utils.cpp
     cflags = -fPIC -DADB_HOST=1 -Isystem/core/base/include -Isystem/core/include
-build libbase.so: lib system/core/base/chrono_utils.cpp.o system/core/base/file.cpp.o system/core/base/logging.cpp.o system/core/base/parsenetaddress.cpp.o system/core/base/quick_exit.cpp.o system/core/base/stringprintf.cpp.o system/core/base/strings.cpp.o system/core/base/test_utils.cpp.o
+build libbase.so: lib system/core/base/chrono_utils.cpp.o system/core/base/errors_unix.cpp.o system/core/base/file.cpp.o system/core/base/logging.cpp.o system/core/base/parsenetaddress.cpp.o system/core/base/quick_exit.cpp.o system/core/base/stringprintf.cpp.o system/core/base/strings.cpp.o system/core/base/test_utils.cpp.o
     ldflags = 
 build system/core/liblog/config_read.c.o: cc system/core/liblog/config_read.c
     cflags = -fPIC -DLIBLOG_LOG_TAG=1006 -D_XOPEN_SOURCE=700 -DFAKE_LOG_DEVICE=1 -Isystem/core/include

@@ -29,3 +29,13 @@
  const char* getprogname() {
    return program_invocation_short_name;
  }
+--- a/system/core/base/errors_unix.cpp
++++ b/system/core/base/errors_unix.cpp
+@@ -17,6 +17,7 @@
+ #include "android-base/errors.h"
+ 
+ #include <errno.h>
++#include <string.h>
+ 
+ namespace android {
+ namespace base {
