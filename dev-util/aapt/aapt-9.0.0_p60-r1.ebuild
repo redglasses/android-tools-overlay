@@ -12,7 +12,7 @@ DESCRIPTION="Android Asset Packaging Tool"
 HOMEPAGE="https://android.googlesource.com/platform/frameworks/base/"
 # The ninja file was created by running the ruby script from archlinux by hand and fixing the build vars.
 # No point in depending on something large/uncommon like ruby just to generate a ninja file.
-SRC_URI="https://android.googlesource.com/platform/frameworks/base/+archive/refs/tags/android-${MY_PV}/tools/aapt.tar.gz -> ${P}.tar.gz
+SRC_URI="https://android.googlesource.com/platform/frameworks/base/+archive/refs/tags/android-${MY_PV}/tools/${PN}.tar.gz -> ${P}.tar.gz
 		https://android.googlesource.com/platform/frameworks/native/+archive/refs/tags/android-${MY_PV}/include/android.tar.gz -> ${P}-nativeinclude.tar.gz"
 
 # The entire source code is Apache-2.0, except for fastboot which is BSD-2.
