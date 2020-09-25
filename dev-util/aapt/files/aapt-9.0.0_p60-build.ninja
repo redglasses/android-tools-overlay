@@ -16,6 +16,9 @@ rule cc
 rule cxx
   command = $CXX -std=gnu++2a $CXXFLAGS $CPPFLAGS $cflags -c $in -o $out
 
+rule lib
+  command = $CXX -shared -Wl,-soname,$out -o $out $in $ldflags $LDFLAGS
+
 rule link
   command = $CXX $ldflags $LDFLAGS $in -o $out
 
@@ -33,47 +36,49 @@ rule genheader
 
 
 build frameworks/base/tools/aapt/AaptAssets.cpp.o: cxx frameworks/base/tools/aapt/AaptAssets.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/AaptConfig.cpp.o: cxx frameworks/base/tools/aapt/AaptConfig.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/AaptUtil.cpp.o: cxx frameworks/base/tools/aapt/AaptUtil.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/AaptXml.cpp.o: cxx frameworks/base/tools/aapt/AaptXml.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/ApkBuilder.cpp.o: cxx frameworks/base/tools/aapt/ApkBuilder.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/Command.cpp.o: cxx frameworks/base/tools/aapt/Command.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/CrunchCache.cpp.o: cxx frameworks/base/tools/aapt/CrunchCache.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/FileFinder.cpp.o: cxx frameworks/base/tools/aapt/FileFinder.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/Images.cpp.o: cxx frameworks/base/tools/aapt/Images.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/Package.cpp.o: cxx frameworks/base/tools/aapt/Package.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/pseudolocalize.cpp.o: cxx frameworks/base/tools/aapt/pseudolocalize.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/Resource.cpp.o: cxx frameworks/base/tools/aapt/Resource.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/ResourceFilter.cpp.o: cxx frameworks/base/tools/aapt/ResourceFilter.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/ResourceIdCache.cpp.o: cxx frameworks/base/tools/aapt/ResourceIdCache.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/ResourceTable.cpp.o: cxx frameworks/base/tools/aapt/ResourceTable.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/SourcePos.cpp.o: cxx frameworks/base/tools/aapt/SourcePos.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/StringPool.cpp.o: cxx frameworks/base/tools/aapt/StringPool.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/WorkQueue.cpp.o: cxx frameworks/base/tools/aapt/WorkQueue.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/XMLNode.cpp.o: cxx frameworks/base/tools/aapt/XMLNode.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/ZipEntry.cpp.o: cxx frameworks/base/tools/aapt/ZipEntry.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build frameworks/base/tools/aapt/ZipFile.cpp.o: cxx frameworks/base/tools/aapt/ZipFile.cpp
-    cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+    cflags = -fPIC -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
+build libaapt.so: lib frameworks/base/tools/aapt/AaptAssets.cpp.o frameworks/base/tools/aapt/AaptConfig.cpp.o frameworks/base/tools/aapt/AaptUtil.cpp.o frameworks/base/tools/aapt/AaptXml.cpp.o frameworks/base/tools/aapt/ApkBuilder.cpp.o frameworks/base/tools/aapt/Command.cpp.o frameworks/base/tools/aapt/CrunchCache.cpp.o frameworks/base/tools/aapt/FileFinder.cpp.o frameworks/base/tools/aapt/Images.cpp.o frameworks/base/tools/aapt/Package.cpp.o frameworks/base/tools/aapt/pseudolocalize.cpp.o frameworks/base/tools/aapt/Resource.cpp.o frameworks/base/tools/aapt/ResourceFilter.cpp.o frameworks/base/tools/aapt/ResourceIdCache.cpp.o frameworks/base/tools/aapt/ResourceTable.cpp.o frameworks/base/tools/aapt/SourcePos.cpp.o frameworks/base/tools/aapt/StringPool.cpp.o frameworks/base/tools/aapt/WorkQueue.cpp.o frameworks/base/tools/aapt/XMLNode.cpp.o frameworks/base/tools/aapt/ZipEntry.cpp.o frameworks/base/tools/aapt/ZipFile.cpp.o
+    ldflags = -lbase -landroidfw -lpng -lutils -llog -lcutils -lexpat -lziparchive -lz
 build frameworks/base/tools/aapt/Main.cpp.o: cxx frameworks/base/tools/aapt/Main.cpp
     cflags = -Wno-format-y2k -DSTATIC_ANDROIDFW_FOR_TOOLS -Iframeworks/native/include
 build aapt: link frameworks/base/tools/aapt/AaptAssets.cpp.o frameworks/base/tools/aapt/AaptConfig.cpp.o frameworks/base/tools/aapt/AaptUtil.cpp.o frameworks/base/tools/aapt/AaptXml.cpp.o frameworks/base/tools/aapt/ApkBuilder.cpp.o frameworks/base/tools/aapt/Command.cpp.o frameworks/base/tools/aapt/CrunchCache.cpp.o frameworks/base/tools/aapt/FileFinder.cpp.o frameworks/base/tools/aapt/Images.cpp.o frameworks/base/tools/aapt/Package.cpp.o frameworks/base/tools/aapt/pseudolocalize.cpp.o frameworks/base/tools/aapt/Resource.cpp.o frameworks/base/tools/aapt/ResourceFilter.cpp.o frameworks/base/tools/aapt/ResourceIdCache.cpp.o frameworks/base/tools/aapt/ResourceTable.cpp.o frameworks/base/tools/aapt/SourcePos.cpp.o frameworks/base/tools/aapt/StringPool.cpp.o frameworks/base/tools/aapt/WorkQueue.cpp.o frameworks/base/tools/aapt/XMLNode.cpp.o frameworks/base/tools/aapt/ZipEntry.cpp.o frameworks/base/tools/aapt/ZipFile.cpp.o frameworks/base/tools/aapt/Main.cpp.o

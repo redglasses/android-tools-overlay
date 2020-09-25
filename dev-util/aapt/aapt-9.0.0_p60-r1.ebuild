@@ -43,7 +43,8 @@ unpack_into() {
 src_unpack() {
 	unpack_into "${P}.tar.gz" frameworks/base/tools/"${PN}"
 	unpack_into "${P}-nativeinclude.tar.gz" frameworks/native/include/android
-
+	mkdir -p include/"${PN}"
+	cp frameworks/base/tools/"${PN}"/*.h include/"${PN}"/
 	cp "${FILESDIR}/${P}-build.ninja" "build.ninja" || die
 }
 
@@ -80,5 +81,8 @@ src_compile() {
 }
 
 src_install() {
-	dobin aapt
+	dobin ${PN}
+	dolib.so lib${PN}.so
+
+	doheader -r include/"${PN}"
 }
